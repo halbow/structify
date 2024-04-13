@@ -1,0 +1,35 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "structify"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+]
+
+[project.optional-dependencies]
+dev = [
+    "mypy",
+    "pytest",
+    "pytest-cov",
+    "ruff",
+]
+
+[tool.pip-tools]
+generate-hashes = true
+
+[tool.ruff]
+line-length = 120
+target-version = 'py312'
+
+[tool.ruff.lint.isort]
+known-local-folder=["structify", "tests"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+show_error_codes = true
+
+
