@@ -5,7 +5,7 @@
 Define a new struct:
 
 ```python
-from src.structify import struct, impl
+from structify import struct, impl
 
 
 @struct
@@ -36,3 +36,6 @@ p.add()
 
 
 # Limitation
+
+- Mypy and type checkers will not be aware of the method declared on your struct as they are added at runtime.
+- If you define methods on the same struct from different locations, you could end up having clash  

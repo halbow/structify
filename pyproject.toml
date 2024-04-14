@@ -3,11 +3,11 @@ requires = ["hatchling", "hatch-vcs"]
 build-backend = "hatchling.build"
 
 [project]
-name = "struct-ify"
+name = "structify"
 authors = [
   { name="halbow" },
 ]
-version = "0.1.0"
+version = "0.0.1"
 requires-python = ">=3.8"
 readme = "README.md"
 classifiers = [
@@ -15,6 +15,7 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
+#dynamic = ["version"]
 
 
 [project.urls]
@@ -35,7 +36,7 @@ source = "vcs"
 raw-options = { local_scheme = "no-local-version" }
 
 [tool.hatch.build.hooks.vcs]
-version-file = "src/_version.py"
+version-file = "src/structify/_version.py"
 template = '''
 version = "{version}"
 '''

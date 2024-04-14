@@ -2,7 +2,7 @@ from typing import Callable, Any
 
 import pytest
 
-from src.structify import struct, impl
+from structify import struct, impl
 from .incorrect_function import add_1, add_2
 
 
@@ -22,6 +22,28 @@ def test_structify() -> None:
 
     assert p.add() == 3
 
+
+def test_structify_args() -> None:
+    @struct
+    class Point:
+        x: float
+        y: float
+
+    @impl
+    def a(
+        self: Point, *args
+    ) -> float:
+        return self.x + self.y + sum(args)
+    @impl
+    def b(
+        self: Point, *args, **kwargs
+    ) -> float:
+        return self.x + self.y + sum(args) + sum(kwargs.values())
+
+    p = Point(1, 2)
+
+    assert p.a(3, 4) == 10
+    assert p.b(3, 4, x=5, y=6) == 21
 
 @pytest.mark.parametrize("func", [add_1, add_2])
 def test_structify_impl_with_no_self(func: Callable[..., Any]) -> None:

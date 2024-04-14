@@ -1,3 +1,3 @@
-from .structify import struct, impl
+from ._structify import struct, impl
 
 __all__ = ["struct", "impl"]
