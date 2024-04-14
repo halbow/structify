@@ -10,14 +10,13 @@ class _Method(Protocol):
     def __call__(self, *args: Any, **kwargs: Any) -> Any: ...
 
 
-class _struuuctifyCls(Protocol):
+class _StruuuctifyCls(Protocol):
     __struuuctify__: dict[str, _Method]
 
 
-def _struct_get_attr(self: _struuuctifyCls, item: str) -> Callable[..., Any]:
+def _struct_get_attr(self: _StruuuctifyCls, item: str) -> Callable[..., Any]:
     method = self.__struuuctify__.get(item, None)
     if method is None:
-        print(dir(self))
         raise AttributeError(f"'{self.__class__.__name__}' object has no attribute '{item}'")
     return partial(method, self)
 
@@ -38,6 +37,5 @@ def impl(func: _Method) -> Callable[..., Any]:
     if cls is None or not inspect.isclass(cls):
         raise TypeError("self attribute should be a struct")
 
-    print(func.__name__)
     cls.__struuuctify__[func.__name__] = func
     return func
