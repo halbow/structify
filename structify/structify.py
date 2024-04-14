@@ -6,7 +6,8 @@ import inspect
 def _struct_get_attr(self, item):
     method = self.__structify__.get(item, None)
     if method is None:
-        raise AttributeError(f"'{self.__name__}' object has no attribute '{item}'")
+        print(dir(self))
+        raise AttributeError(f"'{self.__class__.__name__}' object has no attribute '{item}'")
     return partial(method, self)
 
 
