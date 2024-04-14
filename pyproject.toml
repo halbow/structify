@@ -36,7 +36,7 @@ source = "vcs"
 raw-options = { local_scheme = "no-local-version" }
 
 [tool.hatch.build.hooks.vcs]
-version-file = "src/structify/_version.py"
+version-file = "src/struuuctify/_version.py"
 template = '''
 version = "{version}"
 '''
@@ -46,7 +46,7 @@ line-length = 120
 target-version = 'py312'
 
 [tool.ruff.lint.isort]
-known-local-folder=["structify", "tests"]
+known-local-folder=["struuuctify", "tests"]
 
 [tool.mypy]
 python_version = "3.12"
