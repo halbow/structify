@@ -1,9 +1,20 @@
 from dataclasses import dataclass
 from functools import partial
 import inspect
+from typing import Callable, Protocol, Any, TypeVar, dataclass_transform
 
 
-def _struct_get_attr(self, item):
+class _Method(Protocol):
+    __name__: str
+
+    def __call__(self, *args: Any, **kwargs: Any) -> Any: ...
+
+
+class _StructifyCls(Protocol):
+    __structify__: dict[str, _Method]
+
+
+def _struct_get_attr(self: _StructifyCls, item: str) -> Callable[..., Any]:
     method = self.__structify__.get(item, None)
     if method is None:
         print(dir(self))
@@ -11,14 +22,18 @@ def _struct_get_attr(self, item):
     return partial(method, self)
 
 
-def struct(cls):
-    cls.__structify__ = {}
+T = TypeVar("T")
 
-    cls.__getattr__ = _struct_get_attr
+
+@dataclass_transform()
+def struct(cls: type[T]) -> type[T]:
+    setattr(cls, "__structify__", {})
+
+    setattr(cls, "__getattr__", _struct_get_attr)
     return dataclass(cls)
 
 
-def impl(func):
+def impl(func: _Method) -> Callable[..., Any]:
     cls = func.__annotations__.get("self")
     if cls is None or not inspect.isclass(cls):
         raise TypeError("self attribute should be a struct")
