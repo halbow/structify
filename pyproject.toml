@@ -3,11 +3,24 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "structify"
-version = "0.1.0"
-requires-python = ">=3.12"
-dependencies = [
+name = "struct-ify"
+authors = [
+  { name="halbow" },
 ]
+version = "0.1.0"
+requires-python = ">=3.8"
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+
+[project.urls]
+"Homepage" = "https://github.com/halbow/"
+"Bug Tracker" = "https://github.com/halbow//issues"
+
 
 [project.optional-dependencies]
 dev = [
@@ -17,8 +30,15 @@ dev = [
     "ruff",
 ]
 
-[tool.pip-tools]
-generate-hashes = true
+[tool.hatch.version]
+source = "vcs"
+raw-options = { local_scheme = "no-local-version" }
+
+[tool.hatch.build.hooks.vcs]
+version-file = "src/_version.py"
+template = '''
+version = "{version}"
+'''
 
 [tool.ruff]
 line-length = 120
