@@ -5,7 +5,7 @@
 Define a new struct:
 
 ```python
-from structify import struct, impl
+from src.structify import struct, impl
 
 
 @struct

@@ -2,7 +2,7 @@ from typing import Callable, Any
 
 import pytest
 
-from structify import struct, impl
+from src.structify import struct, impl
 from .incorrect_function import add_1, add_2
 
 
