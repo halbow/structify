@@ -2,11 +2,11 @@ from typing import Callable, Any
 
 import pytest
 
-from structify import struct, impl
+from struuuctify import struct, impl
 from .incorrect_function import add_1, add_2
 
 
-def test_structify() -> None:
+def test_struuuctify() -> None:
     @struct
     class Point:
         x: float
@@ -23,7 +23,7 @@ def test_structify() -> None:
     assert p.add() == 3  # type: ignore
 
 
-def test_structify_args() -> None:
+def test_struuuctify_args() -> None:
     @struct
     class Point:
         x: int
@@ -44,12 +44,12 @@ def test_structify_args() -> None:
 
 
 @pytest.mark.parametrize("func", [add_1, add_2])
-def test_structify_impl_with_no_self(func: Callable[..., Any]) -> None:
+def test_struuuctify_impl_with_no_self(func: Callable[..., Any]) -> None:
     with pytest.raises(TypeError, match="self attribute should be a struct"):
         impl(func)
 
 
-def test_structify_raise_attribute_error() -> None:
+def test_struuuctify_raise_attribute_error() -> None:
     @struct
     class Point:
         x: float

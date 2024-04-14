@@ -10,12 +10,12 @@ class _Method(Protocol):
     def __call__(self, *args: Any, **kwargs: Any) -> Any: ...
 
 
-class _StructifyCls(Protocol):
-    __structify__: dict[str, _Method]
+class _struuuctifyCls(Protocol):
+    __struuuctify__: dict[str, _Method]
 
 
-def _struct_get_attr(self: _StructifyCls, item: str) -> Callable[..., Any]:
-    method = self.__structify__.get(item, None)
+def _struct_get_attr(self: _struuuctifyCls, item: str) -> Callable[..., Any]:
+    method = self.__struuuctify__.get(item, None)
     if method is None:
         print(dir(self))
         raise AttributeError(f"'{self.__class__.__name__}' object has no attribute '{item}'")
@@ -27,7 +27,7 @@ T = TypeVar("T")
 
 @dataclass_transform()
 def struct(cls: type[T]) -> type[T]:
-    setattr(cls, "__structify__", {})
+    setattr(cls, "__struuuctify__", {})
 
     setattr(cls, "__getattr__", _struct_get_attr)
     return dataclass(cls)
@@ -39,5 +39,5 @@ def impl(func: _Method) -> Callable[..., Any]:
         raise TypeError("self attribute should be a struct")
 
     print(func.__name__)
-    cls.__structify__[func.__name__] = func
+    cls.__struuuctify__[func.__name__] = func
     return func
