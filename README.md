@@ -3,6 +3,7 @@
 ## Rust like struct for python
 
 Define a new struct:
+
 ```python
 from structify import struct, impl
 
@@ -31,3 +32,6 @@ p = Point(1, 2)
 p.add()
 >> 3
 ```
+
+
+# Limitation
