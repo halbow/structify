@@ -54,7 +54,7 @@ jobs:
 
     environment:
       name: testpypi
-      url: https://test.pypi.org/p/struct-ify
+      url: https://test.pypi.org/p/struuuctify
 
     permissions:
       id-token: write  # IMPORTANT: mandatory for trusted publishing
@@ -79,7 +79,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: pypi
-      url: https://pypi.org/p/struct-ify
+      url: https://pypi.org/p/struuuctify
     permissions:
       id-token: write  # IMPORTANT: mandatory for trusted publishing
 
