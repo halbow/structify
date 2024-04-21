@@ -37,5 +37,7 @@ p.add()
 
 # Limitation
 
+This project is more of a gimmick-y pattern and experimentation around rust-like struct in Python !
+
 - Mypy and type checkers will not be aware of the method declared on your struct as they are added at runtime.
 - If you define methods on the same struct from different locations, you could end up having clash  

@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from functools import partial
 import inspect
-from typing import Callable, Protocol, Any, TypeVar, dataclass_transform
+from typing import Callable, Protocol, Any, TypeVar, dataclass_transform, final
 
 
 class _Method(Protocol):
@@ -29,13 +29,13 @@ def struct(cls: type[T]) -> type[T]:
     setattr(cls, "__struuuctify__", {})
 
     setattr(cls, "__getattr__", _struct_get_attr)
-    return dataclass(cls)
+    return final(dataclass(cls))
 
 
 def impl(func: _Method) -> Callable[..., Any]:
     cls = func.__annotations__.get("self")
     if cls is None or not inspect.isclass(cls):
-        raise TypeError("self attribute should be a struct")
+        raise TypeError("self attribute should be a struct class")
 
     cls.__struuuctify__[func.__name__] = func
     return func

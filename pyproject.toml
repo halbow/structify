@@ -7,7 +7,7 @@ name = "struuuctify"
 authors = [
   { name="halbow" },
 ]
-version = "0.0.1"
+version = "0.0.2"
 requires-python = ">=3.11"
 readme = "README.md"
 classifiers = [
@@ -40,6 +40,9 @@ version-file = "src/struuuctify/_version.py"
 template = '''
 version = "{version}"
 '''
+
+[tool.hatch.build.targets.wheel]
+packages = ["struuuctify"]
 
 [tool.ruff]
 line-length = 120
