@@ -1,11 +1,15 @@
 # struuuctify
 
+# Installation
+
+`pip install struuuctify`
+
 ## Rust like struct for python
 
 Define a new struct:
 
 ```python
-from struuuctify import struct, impl
+from structify import struct, impl
 
 
 @struct
