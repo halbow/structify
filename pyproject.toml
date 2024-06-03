@@ -46,7 +46,7 @@ target-version = 'py311'
 known-local-folder=["structify", "tests"]
 
 [tool.mypy]
-python_version = "3.8"
+python_version = "3.11"
 strict = true
 show_error_codes = true
 
