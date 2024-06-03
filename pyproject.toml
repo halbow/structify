@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling", "hatch-vcs"]
+requires = ["hatchling>=1.24.2"]
 build-backend = "hatchling.build"
 
 [project]
@@ -7,16 +7,16 @@ name = "struuuctify"
 authors = [
   { name="halbow" },
 ]
-version = "0.0.2"
 requires-python = ">=3.11"
 readme = "README.md"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
+    "Typing :: Typed",
 ]
-#dynamic = ["version"]
 
+dynamic = ["version"]
 
 [project.urls]
 "Homepage" = "https://github.com/halbow/structify"
@@ -32,27 +32,21 @@ dev = [
 ]
 
 [tool.hatch.version]
-source = "vcs"
-raw-options = { local_scheme = "no-local-version" }
+path = "src/structify/_version.py"
 
-[tool.hatch.build.hooks.vcs]
-version-file = "src/struuuctify/_version.py"
-template = '''
-version = "{version}"
-'''
 
 [tool.hatch.build.targets.wheel]
-packages = ["struuuctify"]
+packages = ["src/structify"]
 
 [tool.ruff]
 line-length = 120
-target-version = 'py312'
+target-version = 'py311'
 
 [tool.ruff.lint.isort]
-known-local-folder=["struuuctify", "tests"]
+known-local-folder=["structify", "tests"]
 
 [tool.mypy]
-python_version = "3.12"
+python_version = "3.8"
 strict = true
 show_error_codes = true
 
