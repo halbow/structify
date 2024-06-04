@@ -1,7 +1,7 @@
 {
   "template": "https://github.com/halbow/templates",
-  "commit": "9ba75d3c1e04137443f6065976f3a41e803c82a5",
-  "checkout": "main",
+  "commit": "a051fa63771fdf5d1f47e36037a38a89317b93c5",
+  "checkout": null,
   "context": {
     "cookiecutter": {
       "project_name": "structify",
