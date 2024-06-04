@@ -1,6 +1,6 @@
 {
   "template": "https://github.com/halbow/templates",
-  "commit": "a051fa63771fdf5d1f47e36037a38a89317b93c5",
+  "commit": "2d510b8eb4b1949b1951a2486a00ebc62eafd22f",
   "checkout": null,
   "context": {
     "cookiecutter": {
